@@ -1,0 +1,26 @@
+<script type="text/template" id="overviewTemplate">
+	<span id="toDoCount">
+		<strong>
+			<%= remaining %>
+		</strong>
+		<%= remaining === 1 ? 'item' : 'items' %>
+		left
+	</span>
+	<ul id="filters">
+		<li>
+			<a href="#/" class="selected">All</a>
+		</li>
+		<li>
+			<a href="#/active">Active</a>
+		</li>
+		<li>
+			<a href="#/completed">Completed</a>
+		</li>
+	</ul>
+	<% if (completed) { %>
+		<button id="clearCompleted">
+			Clear completed
+			(<%= completed %>)
+		</button>
+	<% } %>
+</script>

@@ -26,7 +26,7 @@ var ToDoList = Backbone.Collection.extend({
 	*/
 	remaining: function () {
 		return this.without.apply(this, this.completed());
-	}
+	},
 	/**
 		@function
 		Generates an order number for the to 

@@ -4,7 +4,7 @@
 	@completed {boolean} - indicates whether to do is complete
 */
 
-var application = app || {};
+var application = application || {};
 
 application.ToDo = Backbone.Model.extend({
 	/**
@@ -20,7 +20,7 @@ application.ToDo = Backbone.Model.extend({
 	*/
 	toggle: function () {
 		this.save({
-			completed: !this.get('completed');
+			completed: !this.get('completed')
 		});
 	}
 });

@@ -3,6 +3,8 @@
 	In charge of individual to do items
 */
 
+var application = application || {};
+
 application.ToDoVIew = Backbone.View.extend({
 	tagName: 'li',
 	template: _.template($('#itemTemplate').html()),

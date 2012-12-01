@@ -10,11 +10,13 @@
 	Top level UI
 */
 
+var application = application || {};
+
 application.ApplicationView = Backbone.View.extend({
 	/**
 		View hook
 	*/
-	el: #toDoApp,
+	el: '#toDoApp',
 	/**
 		Template for to do list overview
 	*/
@@ -26,7 +28,7 @@ application.ApplicationView = Backbone.View.extend({
 		'keypress #newToDo': 'createOnEnter',
 		'click #clearCompleted': 'clearCompleted',
 		'click #toggleAll': 'toggleAllComplete'
-	}
+	},
 	/**
 		@function
 		Initialises the view.
@@ -106,14 +108,14 @@ application.ApplicationView = Backbone.View.extend({
 	*/
 	filterOne: function (toDo) {
 		toDo.trigger('visible');
-	}
+	},
 	/**
 		@function
 		Toggles the visibility of all to do items
 	*/
 	filterAll: function () {
 		application.ToDos.each(this.filterOne, this)
-	}
+	},
 	/**
 		@function
 		Creates attributes for a new to do item

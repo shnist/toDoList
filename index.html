@@ -7,6 +7,19 @@
 		<link rel="stylesheet" href="/assets/style/base.css">
 	</head>
 	<body>
+		<section id="toDoApp">
+			<header id="header">
+				<h1>To Dos</h1>
+				<input type="text" id="newToDo" placeholder="What needs to be done?" autofocus>
+			</header>
+			<section id="main">
+				<input type="checkbox" id="toggleAll">
+				<label for="toggleAll">Mark all as complete</label>
+				<ul id="todoList"></ul>
+			</section>
+			<footer id="footer"></footer>
+		</section>
+
 		<!-- scripts -->
 		<script type="text/javascript" src="/assets/script/base.js"></script>
 		<script type="text/javascript" src="/assets/script/third_party/jquery.min.js"></script>

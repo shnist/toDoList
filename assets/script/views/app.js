@@ -9,7 +9,6 @@
 	Application View
 	Top level UI
 */
-
 var application = application || {};
 
 application.ApplicationView = Backbone.View.extend({
@@ -35,11 +34,11 @@ application.ApplicationView = Backbone.View.extend({
 		Retrieves any to dos if they exist in local storage
 		Initialise event binding
 	*/
-	init: function () {
+	initialize: function () {
 		this.$input = this.$('#newToDo');
 		this.$allCheckBox = this.$('#toggleAll')[0];
 		this.$footer = this.$('#footer');
-		this.$main = $this.$('#main');
+		this.$main = this.$('#main');
 
 		window.application.ToDos.on('add', this.addOne, this);
 		window.application.ToDos.on('reset', this.addAll, this);
@@ -76,7 +75,7 @@ application.ApplicationView = Backbone.View.extend({
 			this.$footer.hide();
 		}
 
-		this.allCheckBox.checked = !remaining;
+		this.$allCheckBox.checked = !remaining;
 	},
 	/**
 		@function

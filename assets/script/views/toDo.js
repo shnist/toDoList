@@ -5,7 +5,7 @@
 
 var application = application || {};
 
-application.ToDoVIew = Backbone.View.extend({
+application.ToDoView = Backbone.View.extend({
 	tagName: 'li',
 	template: _.template($('#itemTemplate').html()),
 	/**
@@ -14,7 +14,9 @@ application.ToDoVIew = Backbone.View.extend({
 	events: {
 		'dblclick label': 'edit',
 		'keypress .edit': 'saveOnEnter',
-		'blur .edit': 'saveChanges'
+		'blur .edit': 'saveChanges',
+		'click .toggle': 'toggleCompleted',
+		'click .destroy': 'clear'
 	},
 	/**
 		@function
@@ -22,8 +24,10 @@ application.ToDoVIew = Backbone.View.extend({
 		We have a one to one relationship with the to do
 		view, so we can hook them up directly
 	*/
-	init: function () {
+	initialize: function () {
 		this.model.on('change', this.render, this);
+		this.model.on('destroy', this.remove, this);
+		this.model.on('visible', this.toggleVisible, this);
 	},
 	/**
 		@function
@@ -31,6 +35,8 @@ application.ToDoVIew = Backbone.View.extend({
 	*/
 	render: function () {
 		this.$el.html(this.template(this.model.toJSON()));
+		this.$el.toggleClass('completed', this.model.get('completed'));
+		this.toggleVisible();
 		this.$input = this.$('.edit');
 
 		return this;
@@ -66,5 +72,38 @@ application.ToDoVIew = Backbone.View.extend({
 		if (event.which === ENTER_KEY) {
 			this.saveChanges();
 		}
+	},
+	/**
+		@function
+		Toggles visibility of to do item
+	*/
+	toggleVisible: function () {
+		this.$el.toggleClass('hidden', this.isHidden());
+	},
+	/**
+		@function
+		Returns all hidden to dos
+	*/
+	isHidden: function () {
+		var isCompleted = this.model.get('completed');
+
+		return (
+			(!isCompleted && application.ToDoFilter === 'completed') ||
+			(isCompleted && application.ToDoFilter === 'active')
+		);
+	},
+	/**
+		@function
+		Toggles the completed state of a to do item
+	*/
+	toggleCompleted: function () {
+		this.model.toggle();	
+	},
+	/**
+		@function
+		Removes to do item from local storage
+	*/
+	clear: function () {
+		this.model.destroy();
 	}
 });

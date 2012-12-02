@@ -13,7 +13,7 @@ var Router = Backbone.Router.extend({
 		then trigger a filter event on the collection
 		which will hide / unhide to do items as specified
 	*/
-	setFilter: function () {
+	setFilter: function (parameter) {
 		window.application.ToDoFilter = parameter.trim () || '';
 		window.application.ToDos.trigger('filter');
 	}

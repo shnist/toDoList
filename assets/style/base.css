@@ -3,13 +3,55 @@
 */
 
 
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
 body {
 	font-family: Verdana, sans-serif;
+	background: #eee;
+	color: #333;
+	font-size: 62.5%;
 }
-
 .hidden {
 	display: none;
 }
-.completed {
+#toDoList .completed {
 	background: green;
+}
+#toDoApp {
+	width: 950px;
+	margin: 0 auto;
+	background: #fff;
+	border: 2px solid #ddd;
+	padding: 15px;
+}
+#newToDo{
+	padding: 10px;
+	width: 300px;
+	margin: 0 0 20px 0;
+}
+h1{
+	font-size: 2.0em;
+	margin: 0 0 15px 0;
+}
+p, li, a, label {
+	font-size: 1.2em;
+}
+footer {
+	border-top: 1px dashed #eee;
+	padding: 10px 0 0 0;
+}
+#toDoList li {
+	list-style: none;
+	padding: 10px 0 10px 0;
+	border-top: 1px dotted #999;
+	background: #ddd;
+}
+#toDoList li:last-child {
+	border-bottom: 1px dotted #999;
+}
+.view {
+	padding: 0 0 10px 0;
 }
